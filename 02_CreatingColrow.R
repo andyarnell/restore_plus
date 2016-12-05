@@ -3,10 +3,10 @@
 # and avoid issues with inconsitencies. 
 ###### 1. Set data sources (needs to be adjused by user) ##################
 # Please set the inputpath to the csv files
-inputpath = "C:/R/Brazil1611/Inputs"
-outputpath = "C:/R/Brazil1611/Outputs"
-scriptpath = "C:/R/Brazil1611"
-spp.wd<-"C:/R/Brazil1611/SpeciesAnalysis"
+inputpath = "C:/Data/restore_plus/raw/past_data/Brazil1611/Inputs"
+outputpath = "C:/Data/restore_plus/raw/past_data/Brazil1611/Outputs"
+scriptpath = "C:/Data/restore_plus/scripts"
+spp.wd<-"C:/Data/restore_plus/raw/past_data/Brazil1611/SpeciesAnalysis"
 ########### 2. Input globiom data 
 ###### 2.a Setting files ####
 setwd(inputpath)

@@ -4,11 +4,13 @@
 #"Land_IDCno.csv", "Land_FC.csv", "Land_FCnoSFA.csv", "Land_FCnoCRA.csv", "Land_FCnoCRAnoSFA.csv"
 # files IDCno.csv etc (i.e. without the Land_ start of the file name) are reduced files with only 2010 and 2050
 # land use columns
+#install/load packages
+library(reshape2)
 ########### 1. Set data sources (needs to be adjused by user) ##################
 # Please set the inputpath to the csv files
-inputpath = "C:/R/Brazil1611/Inputs"
-outputpath = "C:/R/Brazil1611/Outputs"
-scriptpath = "C:/R/Brazil"
+inputpath = "C:/Data/restore_plus/raw/past_data/Brazil1611/Inputs"
+outputpath = "C:/Data/restore_plus/raw/past_data/Brazil1611/Outputs"
+scriptpath = "C:/Data/restore_plus/scripts"
 ########### 2. Input globiom data ################
 ######2.a Setting files ####
 setwd(inputpath)
@@ -61,6 +63,8 @@ for (landcover in unique(aggregated_PAS$palandcover)){
   counter = counter+1
   #if (counter>5) break()
 }
+
+
 result_PAS[is.na(result_PAS)] = 0
 if(length(unique(input_PAS$ColRow30)) != nrow(result_PAS)) stop("Problem with transforming the GAMS output of 'PAS_MMA_Brazil_LCTYPESagg.csv' into table format. Too few ColRows!")
 # store
@@ -83,9 +87,12 @@ for (landcover in unique(aggregated_LANDCOVER_INIT$lcialandcover)){
   counter = counter+1
   #if (counter>5) break()
 }
+
+
 result_LANDCOVER_INIT[is.na(result_LANDCOVER_INIT)] = 0
 
 if(length(unique(input_LANDCOVER_INIT$ColRow30)) != nrow(result_LANDCOVER_INIT))  stop("Problem with transforming the GAMS output of 'LANDCOVER_INITagg.csv' into table format. Too few ColRows!")
+
 ####### 2.c Land Use values from IDCno_LC3.CSV, create Land_IDCno.csv #####
 setwd(inputpath)
 IDCno_LC3 = read.csv(filename_IDCno_LC3, header=FALSE)
@@ -493,6 +500,7 @@ result_Land_FCnoCRAnoSFA[is.na(result_Land_FCnoCRAnoSFA)] = 0
 # Store
 setwd(outputpath)
 write.csv(result_Land_FCnoCRAnoSFA, file="Land_FCnoCRAnoSFA.csv", row.names=FALSE, quote=FALSE)
+
 #table<-read.csv("Land_FCnoCRAnoSFA.csv")
 ########### 2. Creating reduced file sizes IDCno.csv, FC.csv ect################
 setwd(outputpath)

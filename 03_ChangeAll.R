@@ -3,9 +3,9 @@
 
 ########## 1. Set data sources (needs to be adjused by user) ##################
 # Please set the inputpath to the csv files
-inputpath = "C:/R/Brazil1611/Inputs"
-outputpath = "C:/R/Brazil1611/Outputs"
-scriptpath = "C:/R/Brazil1611"
+inputpath = "C:/Data/restore_plus/raw/past_data/Brazil1611/Inputs"
+outputpath = "C:/Data/restore_plus/raw/past_data/Brazil1611/Outputs"
+scriptpath = "C:/Data/restore_plus/scripts"
 
 ########### 2. Input globiom data (calculated in PreparingGlobiomOutputs)################
 setwd(outputpath)
@@ -17,7 +17,7 @@ Land_FC<-read.csv("Land_FC.csv")
 Land_FCnoSFA<-read.csv("Land_FCnoSFA.csv")
 Land_FCnoCRA<-read.csv("Land_FCnoCRA.csv")
 Land_FCnoCRAnoSFA<-read.csv("Land_FCnoCRAnoSFA.csv")
-
+head(Land_IDCno)
 ############################ 3. Change 10_50 ######################
 Land_IDCno$PriFor10_50<-Land_IDCno$LU_PriFor_2050-Land_IDCno$LU_PriFor_2010
 Land_IDCno$MngFor10_50<-Land_IDCno$LU_MngFor_2050-Land_IDCno$LU_MngFor_2010
